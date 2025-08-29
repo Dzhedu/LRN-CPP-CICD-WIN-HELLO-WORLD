@@ -4,8 +4,12 @@
 Программа Hello World на C++.   
 MSVS 2022.  
 
+0// Создать репозиторию LRN-CPP-CICD-WIN-HELLO-WORLD  
+
 1// Developer Command Prompt v17.14.11  
 cd C:\Users\User\source\repos  
 mkdir LRN-CPP-CICD-WIN-HELLO-WORLD  
 cd LRN-CPP-CICD-WIN-HELLO-WORLD  
+
+2// 
 
