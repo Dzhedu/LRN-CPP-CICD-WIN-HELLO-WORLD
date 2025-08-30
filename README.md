@@ -206,9 +206,9 @@ PS C:\Users\User\source\prod>
 
 **//14 Запускаем программу LRN-CPP-CICD-WIN-HELLO-WORLD.exe, убеждаемся что она работает корректно.**  
 
-#Итог  
+# Итог  
 
-** Мы посмотрели работу GitHub CI/CD на простом примере Hello World на C++ на MSVS2022.**
+**Мы посмотрели работу GitHub CI/CD на простом примере Hello World на C++ на MSVS2022.**
 
 
 
