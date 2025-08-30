@@ -139,7 +139,77 @@ git commit -m "Autobuild file added"
 git push %CR% %CB%
 ```
 
-**//11 **
+**//11 Так как триггером для запуска автосборки является любой пуш, то мы должны сразу получить готовый артефакт.**  
+**Заходим в GitHub Actions. Смотрим что сборка успешная, качаем артефакт, проверяем его работу.**  
+
+**//12 Скачаем артефакт с помощью скрипта на PowerShell. В дериктории prod создаем скрипт lisa6_artfact_downloader.ps1 и записываем данные.**  
+
+**lisa6_artfact_downloader.ps1**  
+
+```
+## Artefact Downloader
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$Owner,
+
+    [Parameter(Mandatory=$true)]
+    [string]$Repo,
+
+    [Parameter(Mandatory=$true)]
+    [string]$ArtifactId,
+
+    [Parameter(Mandatory=$true)]
+    [string]$Token,
+
+    [switch]$CleanUp
+)
+
+#
+$apiUrl = "https://api.github.com/repos/$Owner/$Repo/actions/artifacts/$ArtifactId/zip"
+$zipFile = "artifact_$ArtifactId.zip"`
+
+# 
+$headers = @{
+    Authorization = "Bearer $Token"
+    Accept        = "application/vnd.github.v3+json"
+}
+
+Write-Host "Download processing $ArtifactId from $Owner/$Repo..."
+Invoke-WebRequest -Uri $apiUrl -Headers $headers -OutFile $zipFile
+
+Write-Host "Unzip processing..."
+Expand-Archive -Path $zipFile -Force
+
+if ($CleanUp) {
+    Write-Host "Delete temp files processing..."
+    Remove-Item $zipFile
+}
+
+Write-Host "Artifact downloaded and unziped!"
+```
+
+**//13 Запускаем скрипт, предаем правильные аргументы, проверяем работу.**  
+
+```
+PS C:\Users\User\source\prod> .\lisa6_artfact_downloader.ps1 `
+>> -Owner "Dzhedu" `
+>> -Repo $CR `
+>> -ArtifactId "3889955827" `
+>> -Token $Token `
+>> -CleanUp
+Download processing 3889955827 from Dzhedu/LRN-CPP-CICD-WIN-HELLO-WORLD...
+Unzip processing...
+Delete temp files processing...
+Artifact downloaded and unziped!
+PS C:\Users\User\source\prod>
+```
+
+**//14 Запускаем программу LRN-CPP-CICD-WIN-HELLO-WORLD.exe, убеждаемся что она работает корректно.**  
+
+#Итог  
+
+** Мы посмотрели работу GitHub CI/CD на простом примере Hello World на C++ на MSVS2022.**
+
 
 
 
