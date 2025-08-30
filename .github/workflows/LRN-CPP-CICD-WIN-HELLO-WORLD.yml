@@ -1,0 +1,31 @@
+name: Build and Package LRN-CPP-CICD-WIN-HELLO-WORLD.exe on Windows
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-2025
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up MSVC environment
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Compile LRN-CPP-CICD-WIN-HELLO-WORLD.cpp
+      run: cl /EHsc LRN-CPP-CICD-WIN-HELLO-WORLD.cpp
+
+    - name: Create ZIP archive
+      run: |
+        powershell Compress-Archive -Path LRN-CPP-CICD-WIN-HELLO-WORLD.exe -DestinationPath LRN-CPP-CICD-WIN-HELLO-WORLD.zip
+
+    - name: Upload ZIP as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: main-package
+        path: LRN-CPP-CICD-WIN-HELLO-WORLD.zip
