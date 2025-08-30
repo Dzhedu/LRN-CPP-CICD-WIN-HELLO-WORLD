@@ -29,7 +29,7 @@ git pull %CR% %CB%
 *.vcxproj.filters  
 *.vcxproj.user
 ```
-**Добавляет в индекс, коммитим, и пушим изменения:**
+**Добавляем в индекс, коммитим, и пушим изменения:**
 ```
 git add .gitignore  
 git commit -m "chore: update .gitignore"  
@@ -70,7 +70,26 @@ git add LRN-CPP-CICD-WIN-HELLO-WORLD.h
 git commit -m "Line 1"
 git push %CR% %CB%
 ```
-  
+
+**6// Сделаем сборку локально. В Developer Command Prompt v17.14.11:**  
+```
+set CP=LRN-CPP-CICD-WIN-HELLO-WORLD
+cl /EHsc %CP%.cpp /Fe"C:\Users\User\source\prod\%CP%.exe"
+```
+
+**7// Проверяем работу.**  
+```
+c:\Users\User\source\prod\%CP%.exe
+```  
+**Вывод на экране:**  
+```
+c:\Users\User\source\repos\LRN-CPP-CICD-WIN-HELLO-WORLD>c:\Users\User\source\prod\%CP%.exe
+Hello World
+
+```
+
+**8// Делаем автоматическую сборку через GitHub Actions. Добавляем каталог .workflows. Там создаем файл LRN-CPP-CICD-WIN-HELLO-WORLD.yml**
+
 
 
 
