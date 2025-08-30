@@ -17,7 +17,7 @@ git branch -M %CB%
 git remote add %CR% git@github.com:Dzhedu/LRN-CPP-CICD-WIN-HELLO-WORLD.git  
 git pull %CR% %CB%  
   
-3// Специалист редактирует .gitignore в редакторе Notepad++. Добавляет в начало строки и сохраняет.
+3// Специалист редактирует .gitignore в редакторе Notepad++. Добавляет в начало строки и сохраняет.  
 \# MSVS2022  
 .vs/  
 *.sln  
