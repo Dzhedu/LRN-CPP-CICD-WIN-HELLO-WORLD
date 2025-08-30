@@ -44,7 +44,7 @@ int main() {
     HelloWorld hw;
     hw.Print();
     return 0;
-}```  
+}  
 
 **LRN-CPP-CICD-WIN-HELLO-WORLD.h**  
   ```c++
@@ -53,7 +53,7 @@ int main() {
 class HelloWorld {
 public:
     void Print() const;
-};```  
+};
   
 
 5// 
