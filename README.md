@@ -32,7 +32,7 @@ git push %CR% %CB%
 4// Создаем в проекте файл LRN-CPP-CICD-WIN-HELLO-WORLD.cpp и заголовочный файл LRN-CPP-CICD-WIN-HELLO-WORLD.h.  
 
 **LRN-CPP-CICD-WIN-HELLO-WORLD.cpp**  
-  
+  ```c++ 
 #include "LRN-CPP-CICD-WIN-HELLO-WORLD.h"
 #include <iostream>
 
@@ -44,16 +44,16 @@ int main() {
     HelloWorld hw;
     hw.Print();
     return 0;
-}  
+}```  
 
 **LRN-CPP-CICD-WIN-HELLO-WORLD.h**  
-  
+  ```c++
 #pragma once
 
 class HelloWorld {
 public:
     void Print() const;
-};  
+};```  
   
 
 5// 
